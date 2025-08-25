@@ -1,0 +1,22 @@
+{
+  "name": "gymres",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist",
+    "sass": "sass src/styles/main.scss dist/assets/styles.css --style=compressed --no-source-map",
+    "js": "esbuild src/js/main.js --bundle --format=iife --outfile=dist/assets/app.js --minify",
+
+    "copy": "node -e \"fs=require('fs');fs.mkdirSync('dist',{recursive:true});fs.cpSync('src/index.html','dist/index.html');fs.cpSync('src/manifest.webmanifest','dist/manifest.webmanifest');fs.cpSync('src/sw.js','dist/sw.js');fs.cpSync('src/assets','dist/assets',{recursive:true});\"",
+
+    "build": "npm run clean && npm run sass && npm run js && npm run copy",
+    "preview": "npm run build && http-server dist -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "cpy-cli": "^5.0.0",
+    "esbuild": "^0.23.0",
+    "http-server": "^14.1.1",
+    "rimraf": "^6.0.0",
+    "sass": "^1.77.0"
+  }
+}

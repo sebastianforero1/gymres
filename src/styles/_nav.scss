@@ -1,0 +1,9 @@
+.screen-title { font-size:2rem; font-weight:800; margin-bottom:1rem; }
+.section { margin:1rem 0; }
+.grid-days {
+  display:grid; grid-template-columns:repeat(7,1fr); gap:.5rem;
+}
+.day {
+  padding:.6rem; text-align:center; border-radius:8px; border:1px solid $color-muted; background:#fff;
+}
+.day.selected { background:#000; color:#fff; }
