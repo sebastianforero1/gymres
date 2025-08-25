@@ -1,7 +1,10 @@
 // src/js/ui/templates.js
+// Importa la utilidad `html` para crear plantillas HTML y el estado global `AppState`.
 import { html } from "../util/dom.js";
 import { AppState } from "../state.js";
 
+// Objeto que contiene una función por cada pantalla de la aplicación.
+// Cada función genera el HTML para su respectiva pantalla.
 export const Screens = {
   login: () => html`
     <section class="screen">
@@ -58,7 +61,7 @@ export const Screens = {
       </div>
       <div class="section">
         <p><strong>HORARIOS DISPONIBLES:</strong></p>
-        <div class="chips" id="chipsHours"></div>   <!-- <- el router lo rellena -->
+        <div class="chips" id="chipsHours"></div>   <!-- Este contenedor se rellena dinámicamente -->
       </div>
       <button class="btn-primary" id="btnAddReserva">Añadir Reserva</button>
     </section>
@@ -68,6 +71,7 @@ export const Screens = {
     <section class="screen">
       <h2 class="screen-title">Mis Reservas</h2>
       <div class="list">
+        <!-- Itera sobre las reservas del estado para crear una tarjeta por cada una -->
         ${AppState.reservas.map(r => {
           const diaNum = (r.diaNum ?? parseInt(String(r.dia||"").match(/\d+/)?.[0] || "NaN", 10));
           const diaTxt = Number.isFinite(diaNum) ? `Día ${diaNum}` : (r.dia || "");
@@ -110,6 +114,7 @@ export const Screens = {
     return html`
       <section class="screen">
         <h2 class="screen-title">Configuración</h2>
+        <!-- Itera sobre las configuraciones para crear cada fila con su interruptor -->
         ${rows.map((row,i)=> `
           <div class="toggle">
             <span>${row[0]}</span>
@@ -121,6 +126,7 @@ export const Screens = {
     `;
   },
 
+  // Pantalla de estado (ejemplo estático).
   estado: () => html`
     <section class="screen">
       <h2 class="screen-title">Próximas Horas</h2>

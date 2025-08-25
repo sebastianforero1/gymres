@@ -1,7 +1,21 @@
+// filepath: c:\Users\sebas\OneDrive\Escritorio\gymres\src\styles\_variables.scss
+// Define el color de fondo principal para la aplicación.
 $color-bg: #f7f7f9;
+
+// Define el color de texto por defecto.
 $color-text: #111;
+
+// Define un color sutil, usado para bordes, fondos de chips o elementos de bajo énfasis.
 $color-muted: #e9edf2;
+
+// Define el color de acento principal, usado para botones primarios, íconos activos y otros elementos destacados.
 $color-accent: #000; // Botones negros del mockup
+
+// Define el radio de borde estándar para elementos como tarjetas y botones.
 $radius: 18px;
+
+// Define un efecto de sombra estándar para dar profundidad a elementos como las tarjetas.
 $shadow: 0 8px 24px rgba(0,0,0,.08);
+
+// Define la pila de fuentes (font stack). "Inter" es la fuente principal, y las demás son alternativas (fallbacks) si Inter no está disponible.
 $font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;

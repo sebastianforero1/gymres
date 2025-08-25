@@ -1,34 +1,48 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <!-- Metadatos esenciales -->
   <meta charset="utf-8"/>
+  <!-- Configura la vista para dispositivos móviles, asegurando que la escala sea 1:1 y deshabilitando el zoom del usuario. -->
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"/>
+  <!-- Define el color de la barra de herramientas del navegador en dispositivos móviles. -->
   <meta name="theme-color" content="#000000"/>
+  
+  <!-- Enlaces a recursos de la PWA (Progressive Web App) y estilos -->
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./assets/img/logo.png">
   <link rel="stylesheet" href="./assets/styles.css?v=1">
+  
   <title>GymRes</title>
+  
+  <!-- Estilos en línea para una carga rápida de la fuente y el color de fondo, evitando un "flash" de contenido sin estilo. -->
   <style>
     @font-face{
       font-family:"Inter";
       src:url("./assets/fonts/Inter.woff2") format("woff2");
-      font-display:swap
+      font-display:swap /* La fuente se muestra con una de respaldo mientras carga */
     }
     html,body{background:#f7f7f9}
   </style>
+  
+  <!-- Establece la URL base para todas las rutas relativas en el documento. -->
   <base href="./">
 </head>
 <body>
-  <!-- SOLO LOGO, sin texto -->
+  <!-- Encabezado superior de la aplicación. `role="banner"` mejora la accesibilidad. -->
   <header class="topbar" role="banner">
     <img src="./assets/img/logo.png" alt="GymRes" class="logo">
   </header>
 
+  <!-- Contenedor principal donde JavaScript inyectará dinámicamente las diferentes pantallas. -->
+  <!-- `aria-live="polite"` indica a los lectores de pantalla que anuncien los cambios de contenido de forma no intrusiva. -->
   <main id="app" role="main" aria-live="polite"></main>
 
-  <!-- Barra inferior con íconos minimalistas (SVG) -->
+  <!-- Barra de navegación inferior fija. `role="navigation"` y `aria-label` mejoran la accesibilidad. -->
   <nav class="bottombar" role="navigation" aria-label="Navegación principal">
+    <!-- Cada botón utiliza un atributo `data-go` para que JavaScript sepa a qué ruta navegar. -->
     <button data-go="home" class="nav-btn" id="nav-home" aria-label="Inicio">
+      <!-- Ícono SVG. `aria-hidden="true"` lo oculta de los lectores de pantalla, ya que el `aria-label` del botón ya lo describe. -->
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M3 10.5 12 3l9 7.5v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9z"
               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -54,6 +68,7 @@
     </button>
   </nav>
 
+  <!-- Carga el archivo JavaScript principal. `defer` asegura que se ejecute después de que el HTML se haya analizado. -->
   <script src="./assets/app.js?v=1" defer></script>
 </body>
 </html>

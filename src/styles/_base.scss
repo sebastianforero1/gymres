@@ -1,5 +1,31 @@
+// filepath: c:\Users\sebas\OneDrive\Escritorio\gymres\src\styles\_base.scss
+// Reseteo universal del modelo de caja.
+// `border-box` hace que el padding y el borde se incluyan dentro del ancho y alto total del elemento,
+// lo que facilita mucho el diseño de layouts.
 * { box-sizing: border-box; }
-html, body { margin:0; padding:0; font-family:$font; color:$color-text; background:$color-bg; }
-h1,h2,h3,p { margin:0 0 .75rem 0; }
-button { font: inherit; border:0; cursor:pointer; }
-.visually-hidden { position:absolute; left:-9999px; }
+
+// Estilos base para la página completa.
+html, body {
+  margin: 0;              // Elimina los márgenes por defecto del navegador.
+  padding: 0;             // Elimina el padding por defecto.
+  font-family: $font;     // Aplica la fuente principal definida en _variables.scss.
+  color: $color-text;     // Establece el color de texto por defecto.
+  background: $color-bg;  // Define el color de fondo de la aplicación.
+}
+
+// Reseteo de márgenes para los encabezados y párrafos.
+// Establece un margen inferior consistente y elimina los márgenes superiores.
+h1,h2,h3,p { margin: 0 0 .75rem 0; }
+
+// Estilos base para los botones.
+button {
+  font: inherit;    // Hace que los botones hereden la fuente del elemento padre.
+  border: 0;        // Elimina los bordes por defecto.
+  cursor: pointer;  // Muestra un cursor de puntero al pasar sobre ellos.
+}
+
+// Clase de utilidad para ocultar elementos visualmente pero mantenerlos accesibles para lectores de pantalla.
+.visually-hidden {
+  position: absolute;
+  left: -9999px; // Mueve el elemento muy lejos fuera de la pantalla.
+}

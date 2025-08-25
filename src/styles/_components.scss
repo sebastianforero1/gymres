@@ -1,34 +1,107 @@
 .input {
-  width:100%; padding:.9rem 1rem; border-radius:$radius; border:1px solid $color-muted; background:#fff;
-  margin-bottom:.8rem;
+  width: 100%;
+  padding: .9rem 1rem;
+  border-radius: $radius;
+  border: 1px solid $color-muted;
+  background: #fff;
+  margin-bottom: .8rem;
 }
 .kpi-grid {
-  display:grid; grid-template-columns:1fr 1fr; gap:1rem;
-  .kpi { @extend .card; text-align:center; }
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Dos columnas de igual tamaño.
+  gap: 1rem;
+
+  // Estilo para cada tarjeta de KPI individual.
+  .kpi {
+    @extend .card; // Hereda los estilos de la clase .card.
+    text-align: center;
+  }
 }
-.list { display:grid; gap:.8rem;
-  .item { @extend .card; font-weight:700; text-align:center; }
+.list {
+  display: grid;
+  gap: .8rem;
+
+  // Estilo para cada elemento de la lista.
+  .item {
+    @extend .card; // Hereda los estilos de la clase .card.
+    font-weight: 700;
+    text-align: center;
+  }
 }
 .toggle {
-  display:flex; justify-content:space-between; align-items:center; @extend .card;
-  .switch { width:52px; height:32px; background:$color-muted; border-radius:999px; position:relative; }
-  .switch::after { content:""; position:absolute; width:26px; height:26px; background:#fff; border-radius:50%;
-    top:3px; left:3px; transition: all .2s ease; box-shadow:$shadow; }
-  .switch.on { background:$color-accent; }
-  .switch.on::after { left:23px; }
-}
-.fab { position:fixed; right:16px; bottom:96px; width:56px; height:56px;
-  border-radius:50%; background:$color-accent; color:#fff; font-size:28px; line-height:56px; text-align:center; }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @extend .card; // Hereda los estilos de la clase .card.
 
-.chip.selected { background:#000; color:#fff; }
+  // El cuerpo del interruptor.
+  .switch {
+    width: 52px;
+    height: 32px;
+    background: $color-muted;
+    border-radius: 999px;
+    position: relative;
 
-/* FAB dentro del marco del teléfono */
-.fab { position: fixed; bottom:96px; right:16px; width:56px; height:56px; border-radius:50%;
-  background:$color-accent; color:#fff; font-size:28px; line-height:56px; text-align:center; box-shadow:$shadow;
+    // El círculo (mango) del interruptor.
+    &::after {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      background: #fff;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: all .2s ease; // Anima el movimiento.
+      box-shadow: $shadow;
+    }
+
+    // Estilo para el estado "encendido".
+    &.on {
+      background: $color-accent;
+      // Mueve el círculo hacia la derecha cuando está encendido.
+      &::after {
+        left: 23px;
+      }
+    }
+  }
 }
+
+// Botón de Acción Flotante (FAB).
+.fab {
+  position: fixed; // Se mantiene en una posición fija en la pantalla.
+  right: 16px;
+  bottom: 96px; // Posicionado sobre la barra de navegación inferior.
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: $color-accent;
+  color: #fff;
+  font-size: 28px;
+  line-height: 56px;
+  text-align: center;
+  box-shadow: $shadow;
+}
+
+// Media query para ajustar la posición del FAB en pantallas más anchas que un teléfono.
 @media (min-width: 421px) {
-  .fab { right: calc((100vw - var(--frame))/2 + 16px); }
+  .fab {
+    // Calcula la posición derecha para que el FAB permanezca dentro de un marco de teléfono simulado.
+    right: calc((100vw - var(--frame)) / 2 + 16px);
+  }
 }
 
-.chip.selected { background:#000; color:#fff; }
-.chip.disabled { opacity:.4; filter:grayscale(1); cursor:not-allowed; }
+// Estilos para los componentes "chip" (usados para seleccionar horas).
+.chip {
+  // Estado seleccionado.
+  &.selected {
+    background: #000;
+    color: #fff;
+  }
+  // Estado deshabilitado.
+  &.disabled {
+    opacity: .4;
+    filter: grayscale(1);
+    cursor: not-allowed;
+  }
+}
